@@ -34,6 +34,7 @@ public class StringTest {
     }
 
     @Test
+    @RepeatedTest(10)
     public void contains_basic() {
         assertFalse("abcdefgh".contains("ijk"));
     }
@@ -72,7 +73,7 @@ public class StringTest {
         assertTrue(str.length() > 0);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "lower: {0} | upper: {1}")
     @CsvSource(value= {"abcd, ABCD", "abc, ABC", "def, DEF", "'', ''"}) // <-- String word, String capitalizedWord
     public void upperCase(String word, String capitalizedWord) {
         assertEquals(capitalizedWord, word.toUpperCase());
